@@ -2,7 +2,19 @@ import re
 from twisted.python import log
 
 from buildbot.status.results import SUCCESS, FAILURE, WARNINGS, SKIPPED
-from buildbot.steps.shell import Test
+from buildbot.steps.shell import WarningCountingShellCommand, Test
+
+class DependenciesBase(WarningCountingShellCommand):
+    description = ["updating", "dependencies"]
+    descriptionDone = ["updated", "dependencies"]
+
+class DzilAuthorDependencies(DependenciesBase):
+    name = "author dependencies"
+    command="dzil authordeps | cpanm"
+
+class DzilDependencies(DependenciesBase):
+    name = "dependencies"
+    command="dzil listdeps | cpanm"
 
 class DzilSmoke(Test):
     command=["dzil", "smoke"]
