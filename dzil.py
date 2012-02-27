@@ -85,5 +85,11 @@ class DzilSmoke(Test):
 
         return rc
 
+class DzilSmokeVerbose(DzilSmoke):
+    command=["dzil", "smoke", "--verbose"]
+
 class DzilTest(DzilSmoke):
     command=["dzil", "test"]
+
+class DzilTestVerbose(DzilTest):
+    command=["dzil", "test", "--verbose"]

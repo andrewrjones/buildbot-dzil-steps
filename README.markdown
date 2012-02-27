@@ -32,6 +32,15 @@ This will run the `dzil smoke` command in the build directory. The output is the
 
 It is a subclass of `Test`, and takes the same arguments.
 
+### DzilSmokeVerbose()
+
+Runs DzilSmoke() verbosely.
+
 ### DzilTest()
 
 This is exactly the same as DzilSmoke(), but runs `dzil test`.
+
+
+### DzilTestVerbose()
+
+Runs DzilTest() verbosely.
